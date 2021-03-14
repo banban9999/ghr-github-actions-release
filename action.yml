@@ -1,0 +1,29 @@
+name: 'Release'
+description: 'GitHub Release with assets'
+inputs:
+  tag:
+    description: 'Tag'
+    required: true
+  token:
+    description: 'GitHub repo token'
+    required: true
+  repository:
+    description: 'GitHub owner and repository name'
+    required: true
+  title:
+    description: 'GitHub release title'
+    required: true
+    default: 'Release'
+  body:
+    description: 'GitHub release body'
+    required: false
+    default: '*'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{inputs.tag }}
+    - ${{ inputs.token }}
+    - ${{ inputs.repository }}
+    - ${{ inputs.title }}
+    - ${{ inputs.body }}
