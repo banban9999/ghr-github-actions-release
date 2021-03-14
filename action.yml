@@ -22,7 +22,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{inputs.tag }}
+    - ${{ inputs.tag }}
     - ${{ inputs.token }}
     - ${{ inputs.repository }}
     - ${{ inputs.title }}
