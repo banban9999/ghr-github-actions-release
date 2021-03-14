@@ -14,7 +14,9 @@ jobs:
       uses: banban9999/ghr-github-actions-release@v1
       id: release
       with:
+        tag: ${{ env.tag }}
         token: ${{ secrets.token }}
         title: "Release ${{ env.tag }}"
         body: "GHR GitHub Actions release ${{ env.tag }} was released!"
     - run: echo "query was ${{ steps.release.outputs.query }}"
+      if: ${{ always() }}

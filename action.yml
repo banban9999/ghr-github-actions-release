@@ -4,8 +4,7 @@ description: 'GitHub Release with assets'
 inputs:
   tag:
     description: 'Tag'
-    required: false
-    default: 'default'
+    required: true
   token:
     description: 'GitHub repo token'
     required: true
