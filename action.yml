@@ -7,9 +7,6 @@ inputs:
   token:
     description: 'GitHub repo token'
     required: true
-  repository:
-    description: 'GitHub owner and repository name'
-    required: true
   title:
     description: 'GitHub release title'
     required: true
@@ -24,6 +21,5 @@ runs:
   args:
     - ${{ inputs.tag }}
     - ${{ inputs.token }}
-    - ${{ inputs.repository }}
     - ${{ inputs.title }}
     - ${{ inputs.body }}
