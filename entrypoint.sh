@@ -2,16 +2,19 @@
 
 TAG=$1
 TOKEN=$2
-REPOSITORY=$3
-TITLE=$4
-BODY=$5
+TITLE=$3
+BODY=$4
 
-OWNER=$(echo ${REPOSITORY}| cut -d '/' -f 1)
-REPO=$(echo ${REPOSITORY} | cut -d '/' -f 2)
+# TITLE=$(echo ${TITLE})
+# BODY=$(echo ${BODY})
+OWNER=$(echo ${GITHUB_REPOSITORY}| cut -d '/' -f 1)
+REPO=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
 
 OPTIONS="-t ${TOKEN} -u ${OWNER} -r ${REPO} -n ${TITLE}"
-if [[ ${BODY} -ne "*" ]]; then
-    OPTIONS=${OPTIONS} + " -b ${BODY}"
+if [[ ${BODY} != "*" ]]; then
+    OPTIONS=${OPTIONS}" -b ${BODY}"
 fi
 
-ghr ${OPTIONS} ${TAG}
+time=$(date)
+q=$(echo "result: ghr ${OPTIONS} ${TAG}")
+echo "::set-output name=query::$q"

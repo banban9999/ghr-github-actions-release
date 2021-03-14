@@ -1,3 +1,4 @@
+# https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action
 name: 'Release'
 description: 'GitHub Release with assets'
 inputs:
@@ -7,9 +8,6 @@ inputs:
   token:
     description: 'GitHub repo token'
     required: true
-  repository:
-    description: 'GitHub owner and repository name'
-    required: true
   title:
     description: 'GitHub release title'
     required: true
@@ -18,12 +16,14 @@ inputs:
     description: 'GitHub release body'
     required: false
     default: '*'
+outputs:
+  query: # id of output
+    description: 'debug query'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.tag }}
     - ${{ inputs.token }}
-    - ${{ inputs.repository }}
     - ${{ inputs.title }}
     - ${{ inputs.body }}

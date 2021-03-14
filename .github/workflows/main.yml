@@ -1,0 +1,21 @@
+name: main
+on: 
+  push:
+    tags:
+      - 'v*'
+env:
+  tag: ${GITHUB_REF#refs/tags/v}
+jobs:
+  ghr_github_actions_release_job:
+    runs-on: ubuntu-20.04
+    name: Release
+    steps:
+    - name: GHR GitHub Actions release step
+      uses: banban9999/ghr-github-actions-release@v1
+      id: release
+      with:
+        tag: ${{ env.tag }}
+        token: ${{ secrets.token }}
+        title: "Release ${{ env.tag }}"
+        body: "GHR GitHub Actions release ${{ env.tag }} was released!"
+    - run: echo "query was ${{ steps.release.outputs.query }}"

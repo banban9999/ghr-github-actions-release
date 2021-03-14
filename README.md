@@ -12,10 +12,6 @@ This action create GItHub release by [ghr](https://github.com/tcnksm/ghr).
 
 **Required** GitHub token.
 
-### `repository`
-
-**Required** GitHub owner and repository name. e.g. `test/hello-world`
-
 ### `title`
 
 **Required** GitHub release title.
@@ -35,7 +31,6 @@ uses: banban9999/ghr-github-actions-release@v1
 with:
   tag: ${{ env.tag }}
   token: ${{ secrets.token }}
-  repository: ${{ github.repository }}
   title: "Release ${{ env.tag }}"
   body: "YOUR OSS ${{ env.tag }} was released! See [CHANGELOG.md]() for details"
 env: 
