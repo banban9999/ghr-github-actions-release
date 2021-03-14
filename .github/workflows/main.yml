@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 env:
-  tag: ${GITHUB_REF#refs/tags/v}
+  tag: ${GITHUB_REF#refs/tags/}
 jobs:
   ghr_github_actions_release_job:
     runs-on: ubuntu-20.04
@@ -14,7 +14,6 @@ jobs:
       uses: banban9999/ghr-github-actions-release@v1
       id: release
       with:
-        tag: ${{ env.tag }}
         token: ${{ secrets.token }}
         title: "Release ${{ env.tag }}"
         body: "GHR GitHub Actions release ${{ env.tag }} was released!"

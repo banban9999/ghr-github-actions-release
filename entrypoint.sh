@@ -14,6 +14,9 @@ OPTIONS="-t ${TOKEN} -u ${OWNER} -r ${REPO} -n ${TITLE}"
 if [[ ${BODY} != "*" ]]; then
     OPTIONS=${OPTIONS}" -b ${BODY}"
 fi
+if [[ ${TAG} != "default" ]]; then
+    TAG=${GITHUB_REF#refs/tags/}
+fi
 
 time=$(date)
 q=$(echo "result: ghr ${OPTIONS} ${TAG}")
