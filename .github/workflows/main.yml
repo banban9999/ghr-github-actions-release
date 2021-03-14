@@ -16,7 +16,7 @@ jobs:
       with:
         tag: ${{ env.tag }}
         token: ${{ secrets.token }}
-        title: "Release ${{ env.tag }}"
-        body: "GHR GitHub Actions release ${{ env.tag }} was released!"
+        title: "${{ env.tag }}"
+        body: "${{ env.tag }}"
     - run: echo "query was ${{ steps.release.outputs.query }}"
       if: ${{ always() }}

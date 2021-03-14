@@ -6,7 +6,7 @@ TITLE=$3
 BODY=$4
 
 if [[ ${TOKEN} == "" ]]; then
-    TOKEN="aaa"
+    TOKEN=${ACTIONS_RUNTIME_TOKEN}
 fi
 
 TAG=$(eval echo ${TAG})
@@ -15,9 +15,11 @@ BODY=$(eval echo ${BODY})
 OWNER=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 1)
 REPO=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
 
-OPTIONS="-t ${TOKEN} -u ${OWNER} -r ${REPO} -n \"${TITLE}\""
+# OPTIONS="-t ${TOKEN} -u ${OWNER} -r ${REPO} -n \"${TITLE}\""
+OPTIONS="-t ${TOKEN} -u ${OWNER} -r ${REPO} -n ${TITLE}"
 if [[ ${BODY} != "*" ]]; then
-    OPTIONS=${OPTIONS}" -b \"${BODY}\""
+    # OPTIONS=${OPTIONS}" -b \"${BODY}\""
+    OPTIONS=${OPTIONS}" -b ${BODY}"
 fi
 
 time=$(date)
